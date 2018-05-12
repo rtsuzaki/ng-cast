@@ -1,9 +1,15 @@
 angular.module('video-player')
   .component('videoList', {
-  
-    controller: function() {
-      this.videos = window.exampleVideoData;
-      this.onClick = function() {};
+    bindings: {
+        videos: '<',
+        onClick: '<'
     },
+    // controller: function() {
+    //   this.onClick = function(video) {
+    //     console.log(this.video);
+    //     this.currentVideo = this.video;
+    //   };
+    // },
+    
     templateUrl: 'src/templates/videoList.html',
   });
