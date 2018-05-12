@@ -17,13 +17,13 @@ angular.module('video-player')
       };
       
       
-      this.handleSearchClick = function() {
+      this.handleSearchClick = function(callback) {
         let params = {
           key: window.YOUTUBE_API_KEY,
           query: 'test query',
           max: 5,
-        }
-        youTube.searchYouTube(params, this.searchResults);
+        };
+        youTube.searchYouTube(params, callback);
       };
       
       this.searchResults = (data) => {
