@@ -3,7 +3,10 @@ angular.module('video-player')
   .component('search', {
     bindings: {
       result: '<',
-      search: '<'
+      search: '<',
     },
+    // controller: function() {
+    //   this.searchData = searchText;
+    // },
     templateUrl: 'src/templates/search.html'
   });
