@@ -2,22 +2,37 @@ angular.module('video-player')
 
   .component('app', {
     controller: function(youTube) {
+        
+      this.videos = [{
+        snippet: {
+          thumbnails: {
+            default: {
+              url: ''
+            }
+          },
+          title: '',
+          description: '',
+        },
+        etag: '',
+        id: {
+          videoId: ''
+        }
+      }];
 
-      this.currentVideo = window.exampleVideoData[0];
-      
-      if (this.currentVideo.length === 0) {
-        this.currentVideo.text = 'Please wait';
-      }
-      
-      
-      this.videos = window.exampleVideoData;
+      this.currentVideo = this.videos[0];
+
+      youTube.searchYouTube({
+        key: window.YOUTUBE_API_KEY,
+        query: 'puppies',
+        max: 5,
+      }, (e) => { this.searchResults(e); });
       
       this.selectVideo = (video) => {
         this.currentVideo = video;
       };
       
       
-      this.handleSearchClick = function(callback,text) {
+      this.handleSearchClick = function(callback, text) {
         let params = {
           key: window.YOUTUBE_API_KEY,
           query: text,
@@ -25,11 +40,6 @@ angular.module('video-player')
         };
         youTube.searchYouTube(params, callback);
       };
-      
-
-      // this.getTextBoxInfo = function(e) {
-      //   this.query = e.target.value()
-      // };
 
       this.searchResults = (data) => {
         this.videos = data;

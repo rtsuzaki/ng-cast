@@ -5,8 +5,6 @@ angular.module('video-player')
       result: '<',
       search: '<',
     },
-    // controller: function() {
-    //   this.searchData = searchText;
-    // },
+
     templateUrl: 'src/templates/search.html'
   });
